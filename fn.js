@@ -27,7 +27,9 @@ const sort = fn => arr => arr.sort(fn)
 
 const map = fn => arr => arr.map(fn)
 
-const reduce = (fn, value) => arr => arr.reduce(fn, value)
+// NOTE improved to be usable with string args, too
+// const reduce = (fn, value) => arr => arr.reduce(fn, value)
+const reduce = (fn, value) => arr => Array.prototype.reduce.call(arr, fn, value)
 
 const concat = (arr, v) => arr.concat(v)
 
