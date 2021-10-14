@@ -34,6 +34,8 @@ const reduce = (fn, value) => arr => Array.prototype.reduce.call(arr, fn, value)
 const concat = (arr, v) => arr.concat(v)
 
 // string
+const toLowerCase = str => str.toLowerCase()
+
 const split = ch => str => str.split(ch)
 
 const join = ch => arr => arr.join(ch)
