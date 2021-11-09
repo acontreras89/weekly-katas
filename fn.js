@@ -27,6 +27,8 @@ const sort = fn => arr => arr.sort(fn)
 
 const map = fn => arr => arr.map(fn)
 
+const filter = fn => arr => arr.filter(fn)
+
 // NOTE improved to be usable with string args, too
 // const reduce = (fn, value) => arr => arr.reduce(fn, value)
 const reduce = (fn, value) => arr => Array.prototype.reduce.call(arr, fn, value)
@@ -108,6 +110,7 @@ module.exports = {
   reverse,
   sort,
   map,
+  filter,
   reduce,
   reduce,
   concat,
