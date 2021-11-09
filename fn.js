@@ -123,7 +123,6 @@ module.exports = {
   map,
   filter,
   reduce,
-  reduce,
   concat,
   toLowerCase,
   replace,
