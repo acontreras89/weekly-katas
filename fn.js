@@ -12,7 +12,7 @@ const truthy = value(true)
 const falsy = value(false)
 
 const branch = (cond, p1 = identity, p2 = identity) =>
-  value => cond(value) ? p1(value) : p2(value)
+  (...args) => cond(...args) ? p1(...args) : p2(...args)
 
 const log = x => console.log(x) || x
 
