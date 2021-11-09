@@ -38,6 +38,17 @@ const concat = (arr, v) => arr.concat(v)
 // string
 const toLowerCase = str => str.toLowerCase()
 
+const replace = (target, replacement) => str => str.replace(target, replacement)
+
+// const reverseStr = pipe(split(''), reverse, join(''))
+// pipe(reverseStr, replace(reverseStr(target), reverseStr(replacement)), reverseStr)
+const replaceLast = (target, replacement) => str => {
+  const index = str.lastIndexOf(',')
+  return index >= 0
+    ? str.slice(0, index) + replacement + str.slice(index + target.length)
+    : str
+}
+
 const split = ch => str => str.split(ch)
 
 const join = ch => arr => arr.join(ch)
@@ -115,6 +126,8 @@ module.exports = {
   reduce,
   concat,
   toLowerCase,
+  replace,
+  replaceLast,
   split,
   join,
   traverseStr,
