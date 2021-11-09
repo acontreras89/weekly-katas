@@ -1,0 +1,11 @@
+{
+  "name": "weekly-katas",
+  "version": "0.1.0",
+  "description": "Playground for solving katas with functional programming\"",
+  "main": "fn.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Aarón Contreras <aaron.contreras89@gmail.com> (https://github.com/acontreras89/)",
+  "license": "ISC"
+}
