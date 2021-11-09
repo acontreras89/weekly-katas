@@ -38,6 +38,8 @@ const concat = (arr, v) => arr.concat(v)
 // string
 const toLowerCase = str => str.toLowerCase()
 
+const pluralize = (count, name) => `${count} ${name + (count > 1 ? 's' : '')}`
+
 const replace = (target, replacement) => str => str.replace(target, replacement)
 
 // const reverseStr = pipe(split(''), reverse, join(''))
@@ -125,6 +127,7 @@ module.exports = {
   reduce,
   concat,
   toLowerCase,
+  pluralize,
   replace,
   replaceLast,
   split,
