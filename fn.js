@@ -21,6 +21,8 @@ const update = (key, fn) => obj =>
   Object.assign({}, obj, { [key]: fn(obj[key], key, obj) })
 
 // array
+const length = arr => arr.length
+
 const reverse = arr => arr.reverse()
 
 const sort = fn => arr => arr.sort(fn)
@@ -38,11 +40,16 @@ const concat = (arr, v) => arr.concat(v)
 // string
 const toLowerCase = str => str.toLowerCase()
 
+const split = ch => str => str.split(ch)
+
+const join = ch => arr => arr.join(ch)
+
 const pluralize = (count, name) => `${count} ${name + (count > 1 ? 's' : '')}`
 
 const replace = (target, replacement) => str => str.replace(target, replacement)
 
-// const reverseStr = pipe(split(''), reverse, join(''))
+const reverseStr = pipe(split(''), reverse, join(''))
+
 // pipe(reverseStr, replace(reverseStr(target), reverseStr(replacement)), reverseStr)
 const replaceLast = (target, replacement) => str => {
   const index = str.lastIndexOf(',')
@@ -51,15 +58,9 @@ const replaceLast = (target, replacement) => str => {
     : str
 }
 
-const split = ch => str => str.split(ch)
+const traverseStr = fn => pipe(split(''), map(fn), join(''))
 
-const join = ch => arr => arr.join(ch)
-
-const traverseStr = fn => pipe(
-  split(''),
-  map(fn),
-  join(''),
-)
+const mapWords = fn => pipe(split(' '), map(fn), join(' '))
 
 // math
 const add = (a, b) => a + b
@@ -75,6 +76,8 @@ const mult = multiply
 const eq = a => b => a === b
 
 const gt = right => left => left > right
+
+const gte = right => left => left >= right
 
 const lt = right => left => left < right
 
@@ -120,6 +123,7 @@ module.exports = {
   branch,
   log,
   update,
+  length,
   reverse,
   sort,
   map,
@@ -127,12 +131,14 @@ module.exports = {
   reduce,
   concat,
   toLowerCase,
-  pluralize,
-  replace,
-  replaceLast,
   split,
   join,
+  pluralize,
+  replace,
+  reverseStr,
+  replaceLast,
   traverseStr,
+  mapWords,
   add,
   substract,
   sub,
@@ -141,6 +147,7 @@ module.exports = {
   mult,
   eq,
   gt,
+  gte,
   lt,
   lte,
   possitive,
