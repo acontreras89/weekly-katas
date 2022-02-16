@@ -1,21 +1,13 @@
 const fn = require('./fn')
 
-// if reduce did not work for strings...
-// const isIsogram = fn.pipe(
-//   fn.toLowerCase,
-//   fn.split(''),
-//   fn.reduce(
-//     (acc, letter, index, arr) => acc && !arr.includes(letter, index + 1),
-//     true,
-//   )
-// )
-
+// REVIEW avoid using the index and original string in reduce (this is no functional-ish)
+// IDEA convert to a set and compare lengths
 const isIsogram = fn.pipe(
   fn.toLowerCase,
   fn.reduce(
-    (acc, letter, index, str) => acc && !str.indexOf(letter, index),
+    (acc, letter, index, str) => acc && !str.includes(letter, index + 1),
     true
   )
 )
 
-export default isIsogram
+module.exports = isIsogram
