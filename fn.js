@@ -14,7 +14,7 @@ const falsy = value(false)
 const branch = (cond, p1 = identity, p2 = identity) => (...args) =>
   cond(...args) ? p1(...args) : p2(...args)
 
-const log = x => console.log(x) || x
+const log = x => (console.log(x), x)
 
 // object
 const update = (key, fn) => obj =>
