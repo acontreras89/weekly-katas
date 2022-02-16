@@ -3,7 +3,7 @@ const assert = chai.assert
 
 const formatDuration = require('./formatDuration')
 
-describe('Tests', () => {
+describe('formatDuration', () => {
   it('test', () => {
     assert.strictEqual(formatDuration(1), '1 second')
     assert.strictEqual(formatDuration(62), '1 minute and 2 seconds')
