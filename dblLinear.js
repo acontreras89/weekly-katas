@@ -1,15 +1,14 @@
-
 function dblLinear(n) {
   const u = [1]
   const used = {}
   const pending = []
 
   let i = 0
-  while(u.length < n + 1) {
+  while (u.length < n + 1) {
     const x = u[i]
     const y = x * 2 + 1
 
-    while(pending.length && y >= pending[0]) {
+    while (pending.length && y >= pending[0]) {
       u.push(pending.shift())
     }
 

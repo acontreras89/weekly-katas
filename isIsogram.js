@@ -13,8 +13,9 @@ const fn = require('./fn')
 const isIsogram = fn.pipe(
   fn.toLowerCase,
   fn.reduce(
-    (acc, letter, index, str) => acc && !str.indexOf(letter, index), true
-  ),
+    (acc, letter, index, str) => acc && !str.indexOf(letter, index),
+    true
+  )
 )
 
 export default isIsogram

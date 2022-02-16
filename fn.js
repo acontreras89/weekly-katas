@@ -11,10 +11,10 @@ const truthy = value(true)
 
 const falsy = value(false)
 
-const branch = (cond, p1 = identity, p2 = identity) =>
-  (...args) => cond(...args) ? p1(...args) : p2(...args)
+const branch = (cond, p1 = identity, p2 = identity) => (...args) =>
+  cond(...args) ? p1(...args) : p2(...args)
 
-const log = x => console.log(x) || x
+const log = x => console.log(x) || x
 
 // object
 const update = (key, fn) => obj =>
@@ -87,29 +87,20 @@ const possitive = n => Math.max(0, n)
 
 const sum = reduce(add, 0)
 
-const sumLt = n => pipe(
-  sum,
-  lt(n),
-)
+const sumLt = n => pipe(sum, lt(n))
 
 const divisionBy = divisor => dividend => dividend / divisor
 
 const avg = arr => pipe(sum, divisionBy(arr.length))(arr)
 
-const numberToDigits = pipe(
-  String,
-  split(''),
-  map(Number),
-)
+const numberToDigits = pipe(String, split(''), map(Number))
 
-const digitsToNumber = pipe(
-  join(''),
-  Number,
-)
+const digitsToNumber = pipe(join(''), Number)
 
 // advanced (use at your own risk)
 // REVIEW this is iterating over the entire array
-const takeWhile = cond => reduce((acc, v) => cond(v) ? concat(acc, v) : acc, [])
+const takeWhile = cond =>
+  reduce((acc, v) => (cond(v) ? concat(acc, v) : acc), [])
 
 const countUntil = n => m => (n -= m) > 0
 
