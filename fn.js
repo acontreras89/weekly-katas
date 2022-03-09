@@ -31,9 +31,14 @@ const map = fn => arr => arr.map(fn)
 
 const filter = fn => arr => arr.filter(fn)
 
+const flat = arr => arr.flat()
+
 // NOTE improved to be usable with string args, too
 // const reduce = (fn, value) => arr => arr.reduce(fn, value)
 const reduce = (fn, value) => arr => Array.prototype.reduce.call(arr, fn, value)
+
+const partition = fn =>
+  reduce((acc, v) => (fn(v) ? acc[0].push(v) : acc[1].push(v), acc), [[], []])
 
 const concat = (arr, v) => arr.concat(v)
 
@@ -74,6 +79,8 @@ const multiply = a => b => a * b
 const mult = multiply
 
 const eq = a => b => a === b
+
+const neq = a => b => a !== b
 
 const gt = right => left => left > right
 
@@ -119,7 +126,9 @@ module.exports = {
   sort,
   map,
   filter,
+  flat,
   reduce,
+  partition,
   concat,
   toLowerCase,
   split,
@@ -137,6 +146,7 @@ module.exports = {
   multiply,
   mult,
   eq,
+  neq,
   gt,
   gte,
   lt,
