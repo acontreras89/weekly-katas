@@ -1,5 +1,8 @@
 // utils
-const pipe = (...fns) => value => fns.reduce((acc, fn) => fn(acc), value)
+const pipe =
+  (...fns) =>
+  value =>
+    fns.reduce((acc, fn) => fn(acc), value)
 
 const identity = x => x
 
@@ -11,8 +14,10 @@ const truthy = value(true)
 
 const falsy = value(false)
 
-const branch = (cond, p1 = identity, p2 = identity) => (...args) =>
-  cond(...args) ? p1(...args) : p2(...args)
+const branch =
+  (cond, p1 = identity, p2 = identity) =>
+  (...args) =>
+    cond(...args) ? p1(...args) : p2(...args)
 
 const log = x => (console.log(x), x)
 
