@@ -28,6 +28,11 @@ const update = (key, fn) => obj =>
 // array
 const length = arr => arr.length
 
+const slice =
+  (start = 0, end) =>
+  arr =>
+    arr.slice(start, end)
+
 const reverse = arr => arr.reverse()
 
 const sort = fn => arr => arr.sort(fn)
@@ -127,6 +132,7 @@ module.exports = {
   log,
   update,
   length,
+  slice,
   reverse,
   sort,
   map,
