@@ -102,6 +102,12 @@ const lte = right => left => left <= right
 
 const possitive = n => Math.max(0, n)
 
+const toBase = base => n => n.toString(base)
+
+const toBinary = toBase(2)
+const toOctal = toBase(8)
+const toHex = toBase(16)
+
 const sum = reduce(add, 0)
 
 const sumLt = n => pipe(sum, lt(n))
@@ -163,6 +169,10 @@ module.exports = {
   lt,
   lte,
   possitive,
+  toBase,
+  toBinary,
+  toOctal,
+  toHex,
   sum,
   sumLt,
   divisionBy,
