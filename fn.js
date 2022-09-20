@@ -59,11 +59,13 @@ const split = ch => str => str.split(ch)
 
 const join = ch => arr => arr.join(ch)
 
+const toCharArray = split('')
+
 const pluralize = (count, name) => `${count} ${name + (count > 1 ? 's' : '')}`
 
 const replace = (target, replacement) => str => str.replace(target, replacement)
 
-const reverseStr = pipe(split(''), reverse, join(''))
+const reverseStr = pipe(toCharArray, reverse, join(''))
 
 // pipe(reverseStr, replace(reverseStr(target), reverseStr(replacement)), reverseStr)
 const replaceLast = (target, replacement) => str => {
@@ -73,7 +75,7 @@ const replaceLast = (target, replacement) => str => {
     : str
 }
 
-const traverseStr = fn => pipe(split(''), map(fn), join(''))
+const traverseStr = fn => pipe(toCharArray, map(fn), join(''))
 
 const mapWords = fn => pipe(split(' '), map(fn), join(' '))
 
@@ -116,7 +118,7 @@ const divisionBy = divisor => dividend => dividend / divisor
 
 const avg = arr => pipe(sum, divisionBy(arr.length))(arr)
 
-const numberToDigits = pipe(String, split(''), map(Number))
+const numberToDigits = pipe(String, toCharArray, map(Number))
 
 const digitsToNumber = pipe(join(''), Number)
 
@@ -150,6 +152,7 @@ module.exports = {
   toLowerCase,
   split,
   join,
+  toCharArray,
   pluralize,
   replace,
   reverseStr,
