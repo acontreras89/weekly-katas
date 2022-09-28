@@ -1,29 +1,36 @@
+const PIED_PIPER = 'P'
 const RAT = 'O'
-const TAIL = '~'
 
-const getLeftAndRightRats = town => town.split('P')
+const removeWhitespaces = str => str.replace(/\s/g, '')
 
 const reverseString = str => str.split('').reverse().join('')
 
+const getRatsInEachSide = town => town.split(PIED_PIPER)
+
 const countRatsGoingLeft = town => {
   let rats = 0
-  for (let i = 0; i <= town.length; i++) {
-    const ch = town[i]
 
-    if (ch === RAT) rats++
-    // NOTE skip rest of the rat
-    if (ch === RAT || ch === TAIL) i++
+  for (let i = 0; i <= town.length; i += 2) {
+    if (town[i] === RAT) rats++
   }
 
   return rats
 }
 
+const normalizeInput = town => {
+  const townWithoutWhitespaces = removeWhitespaces(town)
+
+  const [left, right] = getRatsInEachSide(townWithoutWhitespaces)
+
+  const normalizedRight = reverseString(right)
+
+  return left.concat(normalizedRight)
+}
+
 const countDeafRats = town => {
-  const [left, right] = getLeftAndRightRats(town)
+  const allRatsFromLeftToRight = normalizeInput(town)
 
-  const allRatsGoingRight = left + reverseString(right)
-
-  return countRatsGoingLeft(allRatsGoingRight)
+  return countRatsGoingLeft(allRatsFromLeftToRight)
 }
 
 module.exports = countDeafRats
