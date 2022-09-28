@@ -14,4 +14,9 @@ describe('Example Tests', function () {
   it('ex3', function () {
     assert.strictEqual(countDeafRats('~O~O~O~OP~O~OO~'), 2)
   })
+
+  it('rats', function () {
+    assert.strictEqual(countDeafRats('O~~OO~~OO~~OO~P~OO~~OO~~OO~~O'), 8)
+    assert.strictEqual(countDeafRats('O~~OO~~OO~~OO~ P~OO~~OO~~OO~~O'), 8)
+  })
 })
