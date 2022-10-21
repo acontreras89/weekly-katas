@@ -54,6 +54,9 @@ const concat = (arr, v) => arr.concat(v)
 
 // string
 const toLowerCase = str => str.toLowerCase()
+const toUpperCase = str => str.toUpperCase()
+
+const padStart = (length, padString) => str => str.padStart(length, padString)
 
 const split = ch => str => str.split(ch)
 
@@ -80,6 +83,8 @@ const traverseStr = fn => pipe(toCharArray, map(fn), join(''))
 const mapWords = fn => pipe(split(' '), map(fn), join(' '))
 
 // math
+const clamp = (min, max) => n => Math.min(max, Math.max(min, n))
+
 const add = (a, b) => a + b
 
 const substract = (a, b) => a - b
@@ -150,6 +155,8 @@ module.exports = {
   partition,
   concat,
   toLowerCase,
+  toUpperCase,
+  padStart,
   split,
   join,
   toCharArray,
@@ -159,6 +166,7 @@ module.exports = {
   replaceLast,
   traverseStr,
   mapWords,
+  clamp,
   add,
   substract,
   sub,
