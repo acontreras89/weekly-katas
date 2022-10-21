@@ -1,10 +1,14 @@
-const minmax = (min, max) => n => Math.min(max, Math.max(min, n))
+const fn = require('./fn')
 
-const ensureByteRange = minmax(0, 255)
+const ensureByteRange = fn.clamp(0, 255)
 
-const toTwoDigitHex = n => n.toString(16).padStart(2, '0')
+const toHex = fn.pipe(
+  ensureByteRange,
+  fn.toHex,
+  fn.padStart(2, '0'),
+  fn.toUpperCase
+)
 
-const rgb = (r, g, b) =>
-  [r, g, b].map(ensureByteRange).map(toTwoDigitHex).join('').toUpperCase()
+const rgb = (r, g, b) => fn.pipe(fn.map(toHex), fn.join(''))([r, g, b])
 
 module.exports = rgb
