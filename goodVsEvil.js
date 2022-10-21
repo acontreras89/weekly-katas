@@ -1,5 +1,4 @@
-// misc
-const add = (n1, n2) => n1 + n2
+const fn = require('./fn')
 
 // business
 const GOOD_WINS = 'Battle Result: Good triumphs over Evil'
@@ -11,10 +10,17 @@ const GOOD_WORTHS = [1, 2, 3, 3, 4, 10]
 // orcs, men, wargs, goblins, uruk hai, trolls and wizards
 const EVIL_WORTHS = [1, 2, 2, 2, 3, 5, 10]
 
-const getForces = forcesString => forcesString.split(' ').map(Number)
+const getForces = fn.pipe(fn.split(' '), fn.map(Number))
 
-const getForcesTotalWorth = (forces, worths) =>
-  forces.map((count, index) => count * worths[index]).reduce(add)
+const getForcesTotalWorth = worths =>
+  fn.pipe(
+    fn.map((count, index) => count * worths[index]),
+    fn.sum
+  )
+
+const getGoodForcesTotalWorth = getForcesTotalWorth(GOOD_WORTHS)
+
+const getEvilForcesTotalWorth = getForcesTotalWorth(EVIL_WORTHS)
 
 const getBattleResult = (goodForcesWorth, evilForcesWorth) =>
   goodForcesWorth === evilForcesWorth
@@ -27,8 +33,10 @@ function goodVsEvil(goodForcesString, evilForcesString) {
   const goodForces = getForces(goodForcesString)
   const evilForces = getForces(evilForcesString)
 
-  const goodForcesWorth = getForcesTotalWorth(goodForces, GOOD_WORTHS)
-  const evilForcesWorth = getForcesTotalWorth(evilForces, EVIL_WORTHS)
+  const goodForcesWorth = getGoodForcesTotalWorth(goodForces)
+  const evilForcesWorth = getEvilForcesTotalWorth(evilForces)
 
   return getBattleResult(goodForcesWorth, evilForcesWorth)
 }
+
+module.exports = goodVsEvil
