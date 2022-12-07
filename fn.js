@@ -28,6 +28,8 @@ const update = (key, fn) => obj =>
 // array
 const length = arr => arr.length
 
+const includes = arr => item => arr.includes(item)
+
 const slice =
   (start = 0, end) =>
   arr =>
@@ -145,6 +147,7 @@ module.exports = {
   log,
   update,
   length,
+  includes,
   slice,
   reverse,
   sort,
