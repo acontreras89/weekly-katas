@@ -1,3 +1,6 @@
-const arrayDiff = (arr1, arr2) => arr1.filter(item => !arr2.includes(item))
+const fn = require('./fn')
+
+const arrayDiff = (arr1, arr2) =>
+  fn.filter(fn.pipe(fn.includes(arr2), fn.not))(arr1)
 
 module.exports = arrayDiff
