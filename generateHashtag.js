@@ -1,14 +1,14 @@
-const capitalize = str => `${str.charAt(0).toUpperCase()}${str.slice(1)}`
+const fn = require('./fn')
 
-const generateHashtag = phrase => {
-  const words = phrase.split(/\s+/)
-  const capitalizedWords = words.map(capitalize)
-  const hashtag = capitalizedWords.join('')
-
-  // NOTE we use 139 because we still need to prepend the '#'
-  if (hashtag.length > 139 || hashtag === '') return false
-
-  return `#${hashtag}`
-}
+const generateHashtag = fn.pipe(
+  fn.getWords,
+  fn.map(fn.capitalize),
+  fn.join(''),
+  fn.branch(
+    fn.eq(''),
+    fn.falsy,
+    fn.pipe(fn.prefix('#'), fn.branch(fn.pipe(fn.length, fn.gt(140)), fn.falsy))
+  )
+)
 
 module.exports = generateHashtag
