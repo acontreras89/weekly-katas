@@ -58,6 +58,10 @@ const concat = (arr, v) => arr.concat(v)
 const toLowerCase = str => str.toLowerCase()
 const toUpperCase = str => str.toUpperCase()
 
+const capitalize = str => `${str.charAt(0).toUpperCase()}${str.slice(1)}`
+
+const prefix = prefix => str => `${prefix}${str}`
+
 const padStart = (length, padString) => str => str.padStart(length, padString)
 
 const split = ch => str => str.split(ch)
@@ -82,7 +86,10 @@ const replaceLast = (target, replacement) => str => {
 
 const traverseStr = fn => pipe(toCharArray, map(fn), join(''))
 
-const mapWords = fn => pipe(split(' '), map(fn), join(' '))
+const getWords = split(/\s+/)
+
+// REVIEW should this be responsible for joining the words back?
+const mapWords = fn => pipe(getWords, map(fn), join(' '))
 
 // math
 const clamp = (min, max) => n => Math.min(max, Math.max(min, n))
@@ -159,6 +166,8 @@ module.exports = {
   concat,
   toLowerCase,
   toUpperCase,
+  capitalize,
+  prefix,
   padStart,
   split,
   join,
@@ -168,6 +177,7 @@ module.exports = {
   reverseStr,
   replaceLast,
   traverseStr,
+  getWords,
   mapWords,
   clamp,
   add,
