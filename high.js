@@ -1,20 +1,28 @@
+const fn = require('./fn')
+
 const charCode = char => char.charCodeAt(0)
 
 const CHAR_CODE_TO_SCORE_DISTANCE = charCode('a') - 1
 
 const getLetterScore = letter => charCode(letter) - CHAR_CODE_TO_SCORE_DISTANCE
 
-const getWordScore = word =>
-  word.split('').reduce((score, letter) => score + getLetterScore(letter), 0)
+const getWordScore = fn.pipe(fn.toCharArray, fn.map(getLetterScore), fn.sum)
 
-const getWords = str => str.split(/\s+/)
+const toScoredWord = word => ({ word, score: getWordScore(word) })
 
-const highestScoringWord = str => {
-  const words = getWords(str)
-  const scores = words.map(getWordScore)
-  const max = Math.max(...scores)
-  const index = scores.indexOf(max)
-  return words[index]
-}
+const getMaxScoredWord = fn.reduce((currentWord, nextWord) =>
+  currentWord === undefined || nextWord.score > currentWord.score
+    ? nextWord
+    : currentWord
+)
+
+const pickWord = scoredWord => scoredWord.word
+
+const highestScoringWord = fn.pipe(
+  fn.getWords,
+  fn.map(toScoredWord),
+  getMaxScoredWord,
+  pickWord
+)
 
 module.exports = highestScoringWord
