@@ -4,7 +4,7 @@ const assert = chai.assert
 
 const spinWords = require('./spinWords')
 
-describe('Spinning words', () => {
+describe('spinWords', () => {
   it('Sample tests', () => {
     assert.strictEqual(spinWords('Welcome'), 'emocleW')
     assert.strictEqual(spinWords('Hey fellow warriors'), 'Hey wollef sroirraw')

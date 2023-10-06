@@ -2,7 +2,7 @@ const { assert } = require('chai')
 
 const countDeafRats = require('./countDeafRats')
 
-describe('Example Tests', function () {
+describe('countDeafRats', function () {
   it('ex1', function () {
     assert.strictEqual(countDeafRats('~O~O~O~O P'), 0)
   })

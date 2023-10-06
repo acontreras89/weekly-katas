@@ -2,7 +2,7 @@ const { assert } = require('chai')
 
 const separateLiquids = require('./separateLiquids')
 
-describe('Sorting array by liquid density.', function () {
+describe('separateLiquids', function () {
   it('Should be able to sort 3 liquids', function () {
     assert.deepEqual(
       separateLiquids([

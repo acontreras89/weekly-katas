@@ -2,7 +2,7 @@ const { assert } = require('chai')
 
 const goodVsEvil = require('./goodVsEvil')
 
-describe('Sample tests', () => {
+describe('goodVsEvil', () => {
   it('Tests', () => {
     assert.equal(
       goodVsEvil('1 1 1 1 1 1', '1 1 1 1 1 1 1'),
