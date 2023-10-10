@@ -9,7 +9,7 @@
   "author": "Aarón Contreras <aaron.contreras89@gmail.com> (https://github.com/acontreras89/)",
   "license": "ISC",
   "dependencies": {
-    "chai": "^4.3.4",
+    "chai": "^4.3.10",
     "mocha": "^9.1.3"
   }
 }
