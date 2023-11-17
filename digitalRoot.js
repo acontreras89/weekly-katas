@@ -1,11 +1,13 @@
-const digits = n => String(n).split('').map(Number)
+const fn = require('./fn')
 
-const sum = arr => arr.reduce((acc, n) => acc + n)
+const digitalRoot = n => {
+  const steps = fn.pipe(
+    fn.numberToDigits,
+    fn.sum,
+    fn.branch(fn.lt(10), fn.identity, digitalRoot)
+  )
 
-function digitalRoot(n) {
-  if (n < 10) return n
-
-  return digitalRoot(sum(digits(n)))
+  return steps(n)
 }
 
 module.exports = digitalRoot
